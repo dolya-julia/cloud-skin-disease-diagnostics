@@ -135,8 +135,8 @@ STORAGES = {
     "default": {
         "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
         "OPTIONS": {
-            "access_key": "YCAJE4_deLLSyo4bl564c_FxG",
-            "secret_key": "YCPrWGucTi5tfjd0q-85j_Ecf1xjTYuYNfywVBSZ",
+            "access_key": "***",
+            "secret_key": "***",
             "bucket_name": "django-bucket",
             "endpoint_url": "https://storage.yandexcloud.net",
             "region_name": "ru-central1",  

@@ -20,8 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h6_i#5u6czlhi6d(swu@pjyf(cxwy@g$0(n6mhqq#awd3zf719'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -136,6 +135,7 @@ STORAGES = {
         "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
         "OPTIONS": {
             "access_key": "***",
+            "secret_key": "***",
             "bucket_name": "django-bucket",
             "endpoint_url": "https://storage.yandexcloud.net",
             "region_name": "ru-central1",  

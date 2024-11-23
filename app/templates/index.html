@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Отправка файла</title>
+</head>
+<body>
+    <form id="upload-form" method="POST" enctype="multipart/form-data" action="http://84.201.168.172/api/upload-file/">
+        {% csrf_token %}
+        <input type="file" name="file" id="file" accept="image/*">
+        <button type="submit">Отправить</button>
+    </form>
+ <div id="prediction"></div>
+
+    <script>
+        const uploadForm = document.getElementById('upload-form');
+        const predictionDiv = document.getElementById('prediction');
+
+        uploadForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(uploadForm);
+
+            fetch('/api/upload-file/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.prediction) {
+                    predictionDiv.innerHTML = `<h2>Prediction: ${data.prediction}</h2>
+                                              <p>Probability: ${data.probability}</p>`;
+                } else if (data.error) {
+                    predictionDiv.innerHTML = `<p style="color: red;">${data.error}</p>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                predictionDiv.innerHTML = `<p style="color: red;">An error occurred.</p>`;
+            });
+        });
+    </script>
+</body>
+</html>
+
+
